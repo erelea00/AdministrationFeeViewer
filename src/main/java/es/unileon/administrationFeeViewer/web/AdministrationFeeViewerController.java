@@ -1,6 +1,8 @@
 package es.unileon.administrationFeeViewer.web;
 
 import java.io.IOException;
+import java.util.Date;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,8 +22,9 @@ public class AdministrationFeeViewerController {
     public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        logger.info("Returning main page.");
+    	String now = (new Date()).toString();
+        logger.info("Returning mainPage view with " + now);
 
-        return new ModelAndView("mainPage.jsp");
+        return new ModelAndView("mainPage", "now", now);
     }
 }

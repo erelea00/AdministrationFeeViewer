@@ -11,7 +11,10 @@ public class AdministrationFeeViewerControllerTests {
 	public void testHandleRequestView() throws Exception{		
         AdministrationFeeViewerController controller = new AdministrationFeeViewerController();
         ModelAndView modelAndView = controller.handleRequest(null, null);		
-        assertEquals("mainPage.jsp", modelAndView.getViewName());
+        assertEquals("mainPage", modelAndView.getViewName());
+        assertNotNull(modelAndView.getModel());
+        String nowValue = (String) modelAndView.getModel().get("now");
+        assertNotNull(nowValue);
     }
 
 }
