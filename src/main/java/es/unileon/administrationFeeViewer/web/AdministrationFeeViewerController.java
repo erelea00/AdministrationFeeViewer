@@ -16,7 +16,7 @@ public class AdministrationFeeViewerController {
 
     protected final Log logger = LogFactory.getLog(getClass());
 
-    @RequestMapping(value="/hello.htm")
+    @RequestMapping(value="/mainPage.htm")
     public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
