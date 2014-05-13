@@ -3,6 +3,7 @@ package es.unileon.administrationFeeViewer.domain;
 import es.unileon.administrationFeeViewer.account.extra.AccountHandler;
 import es.unileon.administrationFeeViewer.bank.Bank;
 import es.unileon.administrationFeeViewer.client.Client;
+import es.unileon.administrationFeeViewer.fees.AdministrationFee;
 import es.unileon.administrationFeeViewer.handler.Handler;
 import es.unileon.administrationFeeViewer.handler.MalformedHandlerException;
 import es.unileon.administrationFeeViewer.office.Office;
@@ -44,6 +45,11 @@ public class Account {
      * The max account's overdraft ( in positive )
      */
     private float maxOverdraft;
+    
+    /**
+     * Administration fee to be applied 
+     */
+    private AdministrationFee adminFee = null;
 
     /**
      * Create a new account
@@ -233,4 +239,14 @@ public class Account {
     public final Handler getID() {
         return this.id;
     }
+
+	public AdministrationFee getAdminFee() {
+		return adminFee;
+	}
+
+	public void setAdminFee(AdministrationFee adminFee) {
+		this.adminFee = adminFee;
+	}
+    
+    
 }
