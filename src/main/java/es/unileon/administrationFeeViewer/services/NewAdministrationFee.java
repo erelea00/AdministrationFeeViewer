@@ -1,5 +1,5 @@
 package es.unileon.administrationFeeViewer.services;
 
-public class SetNewAdministrationFee {
+public class NewAdministrationFee {
 
 }
