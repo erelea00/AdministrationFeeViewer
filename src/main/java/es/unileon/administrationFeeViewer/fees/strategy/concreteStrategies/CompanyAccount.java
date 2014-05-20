@@ -3,14 +3,31 @@ package es.unileon.administrationFeeViewer.fees.strategy.concreteStrategies;
 import es.unileon.administrationFeeViewer.fees.AdministrationFee;
 import es.unileon.administrationFeeViewer.fees.strategy.FeeStrategy;
 
+/**
+ * Concrete strategy to be applied to a company account
+ * @author EmanuelIosif
+ *
+ */
 public class CompanyAccount implements FeeStrategy{
-
+	
+	/**
+	 * Account modality
+	 */
 	private final String MODALITY ="Cuenta Empresa";
 	
+	/**
+	 * Account modality fee
+	 */
 	private final double MODALITY_FEE = 50;
 	
+	/**
+	 * Charge cycle for the current fee
+	 */
 	private final String FEE_PERIOD ="Semestral";
 	
+	/**
+	 * Creates a be administration fee objects and sets all the attributes
+	 */
 	@Override
 	public AdministrationFee execute() {
 		

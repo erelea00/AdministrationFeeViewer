@@ -3,8 +3,9 @@
 package es.unileon.administrationFeeViewer.account.extra;
 
 /**
+ * 
+ * @author EmanuelIosif
  *
- * @author runix
  */
 public class DetailedInformation {
 
@@ -20,6 +21,10 @@ public class DetailedInformation {
         this("");
     }
 
+    /**
+     * 
+     * @param information
+     */
     public void appendInformation(String information) {
         if (!this.nonEditable) {
             this.info.append(information);
@@ -28,15 +33,25 @@ public class DetailedInformation {
             }
         }
     }
-
+    
+    /**
+     * 
+     * @param information
+     */
     public void appendInformaton(StringBuffer information) {
         this.appendInformation(information.toString());
     }
-
+    
+    /**
+     * 
+     */
     public void doFinal() {
         this.nonEditable = true;
     }
     
+    /**
+     * 
+     */
     @Override
     public String toString() {
         return this.info.toString();

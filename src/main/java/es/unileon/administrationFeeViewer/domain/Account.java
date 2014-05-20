@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 
+ * Class representing the bank account
  * @author EmanuelIosif
  *
  */

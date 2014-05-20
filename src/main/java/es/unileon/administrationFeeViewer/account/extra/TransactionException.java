@@ -3,8 +3,9 @@
 package es.unileon.administrationFeeViewer.account.extra;
 
 /**
+ * 
+ * @author EmanuelIosif
  *
- * @author runix
  */
 public class TransactionException extends Exception{
 

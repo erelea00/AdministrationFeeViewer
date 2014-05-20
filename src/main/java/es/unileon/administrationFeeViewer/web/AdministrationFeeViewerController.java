@@ -17,14 +17,33 @@ import org.springframework.web.servlet.ModelAndView;
 
 import es.unileon.administrationFeeViewer.services.NewAdministrationService;
 
+/**
+ * Administration fee front controller which handles all requests
+ * @author EmanuelIosif
+ *
+ */
 @Controller
 public class AdministrationFeeViewerController {
-
+	
+	/**
+	 * Logger
+	 */
     protected final Log logger = LogFactory.getLog(getClass());
     
+    /**
+     * Autowired administration fee field
+     */
     @Autowired
     private NewAdministrationService newAdministrationService;
-
+    
+    /**
+     * Handles all incoming requests
+     * @param request Request for a page
+     * @param response Response for the request
+     * @return A model and view
+     * @throws ServletException
+     * @throws IOException
+     */
     @RequestMapping(value="/mainPage.htm")
     public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -34,11 +53,19 @@ public class AdministrationFeeViewerController {
 
         return new ModelAndView("mainPage", "model", myModel);
     }
-
+    
+    /**
+     * Getter for the newAdministrationService attribute
+     * @return A new Administration Service
+     */
 	public NewAdministrationService getNewAdministrationService() {
 		return newAdministrationService;
 	}
 
+	/**
+	 * Setter for the newAdministration attribute 
+	 * @param newAdministrationService A new Administration Service
+	 */
 	public void setNewAdministrationService(
 			NewAdministrationService newAdministrationService) {
 		this.newAdministrationService = newAdministrationService;

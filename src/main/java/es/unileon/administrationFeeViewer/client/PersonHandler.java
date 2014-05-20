@@ -9,7 +9,7 @@ import es.unileon.administrationFeeViewer.utils.DniLetters;
 
 /**
  * Identifies a person with the dni
- * @author Gonzalo Nicolas Barreales
+ * @author EmanuelIosif
  */
 public class PersonHandler implements Handler{
     

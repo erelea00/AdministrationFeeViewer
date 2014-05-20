@@ -10,8 +10,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
+ * Handler for the Account
+ * @author EmanuelIosif
  *
- * @author runix
  */
 public class AccountHandler implements Handler {
 
@@ -106,7 +107,12 @@ public class AccountHandler implements Handler {
         this.accountNumber = accountNumber;
         this.dc = calculateDC(office.toString(), bank.toString(), accountNumber + "");
     }
-
+    
+    /**
+     * Class constructor
+     * @param another Another Handler
+     * @throws MalformedHandlerException Malformed Handler Exception
+     */
     public AccountHandler(Handler another) throws MalformedHandlerException {
         this(getField(another, 1, SEPARATOR), getField(another, 0, SEPARATOR), getField(another, 3, SEPARATOR).toString());
         StringBuilder error = new StringBuilder();
@@ -117,7 +123,15 @@ public class AccountHandler implements Handler {
             throw new MalformedHandlerException(error.toString());
         }
     }
-
+    
+    /**
+     * 
+     * @param another
+     * @param number
+     * @param separator
+     * @return
+     * @throws MalformedHandlerException
+     */
     private static Handler getField(Handler another, int number, String separator) throws MalformedHandlerException {
 
         String[] splitHandler = null;

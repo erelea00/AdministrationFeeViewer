@@ -11,7 +11,7 @@ import java.util.Date;
 
 /**
  *
- * @author Gonzalo
+ * @author EmanuelIosif
  */
 public class Person extends Client{
     

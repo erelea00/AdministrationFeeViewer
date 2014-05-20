@@ -13,7 +13,7 @@ import java.util.Iterator;
 /**
  *Class tha provides the basic gestion data of a client in a bank
  * 
- * @author Gonzalo Nicolas Barreales
+ * @author EmanuelIosif
  */
 public class Client {
     

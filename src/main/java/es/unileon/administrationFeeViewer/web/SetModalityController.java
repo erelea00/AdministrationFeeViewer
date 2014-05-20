@@ -16,6 +16,11 @@ import org.apache.commons.logging.LogFactory;
 import es.unileon.administrationFeeViewer.services.NewAdministrationFee;
 import es.unileon.administrationFeeViewer.services.NewAdministrationService;
 
+/**
+ * Controller which handles the get and post requests of the setModality view
+ * @author EmanuelIosif
+ *
+ */
 @Controller
 @RequestMapping(value="/setModality.htm")
 public class SetModalityController {
@@ -23,9 +28,18 @@ public class SetModalityController {
 	/** Logger for this class and subclasses */
     protected final Log logger = LogFactory.getLog(getClass());
 
+    /**
+     * Autowired administration fee field
+     */
     @Autowired
     private NewAdministrationService newAdministrationService;
     
+    /**
+     * Method which handles the post method requests
+     * @param newAdministrationFee A new administration fee for the account
+     * @param result Holds the errors (if any) encountered
+     * @return
+     */
     @RequestMapping(method = RequestMethod.POST)
     public String onSubmit(@Valid NewAdministrationFee newAdministrationFee, BindingResult result)
     {
@@ -39,7 +53,13 @@ public class SetModalityController {
 
         return "redirect:/mainPage.htm";
     }
-
+    
+    /**
+     * Method which handles the get method requests
+     * @param request Request of get method
+     * @return A new administration fee for the account
+     * @throws ServletException
+     */
     @RequestMapping(method = RequestMethod.GET)
     protected NewAdministrationFee formBackingObject(HttpServletRequest request) throws ServletException {
     	
@@ -48,10 +68,18 @@ public class SetModalityController {
         return newAdministrationFee;
     }
 
+    /**
+     * Getter for the newAdministrationService attribute
+     * @return A new Administration Service
+     */
 	public NewAdministrationService getNewAdministrationService() {
 		return newAdministrationService;
 	}
 
+	/**
+	 * Setter for the newAdministrationService attribute 
+	 * @param newAdministrationService A new Administration Service
+	 */
 	public void setNewAdministrationService(
 			NewAdministrationService newAdministrationService) {
 		this.newAdministrationService = newAdministrationService;

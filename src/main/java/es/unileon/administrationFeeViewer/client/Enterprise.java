@@ -13,7 +13,7 @@ import java.util.Iterator;
 /**
  * Class that implements the data of an enterprise
  * 
- * @author Gonzalo Nicolás Barreales
+ * @author EmanuelIosif
  */
 public class Enterprise extends Client{
 

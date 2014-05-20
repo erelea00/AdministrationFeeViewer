@@ -7,7 +7,7 @@ import es.unileon.administrationFeeViewer.handler.Handler;
 
 /**
  * Identifier of enterprises
- * @author Gonzalo Nicolas Barreales
+ * @author EmanuelIosif
  */
 
 //TODO modify cif with the corresponding data

@@ -5,7 +5,7 @@ package es.unileon.administrationFeeViewer.client;
 
 /**
  * Class that implements an address
- * @author Gonzalo Nicolas Barreales
+ * @author EmanuelIosif
  */
 public class Address {
     

@@ -9,8 +9,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
+ * 
+ * @author EmanuelIosif
  *
- * @author runix
  */
 public class BankHandler implements Handler {
 
