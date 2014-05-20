@@ -1,11 +1,11 @@
 package es.unileon.administrationFeeViewer.services;
 
-import es.unileon.administrationFeeViewer.domain.Account;
+import es.unileon.administrationFeeViewer.bank.Bank;
 
 public interface NewAdministrationService {
 	
 	public void setNewAdminFee(NewAdministrationFee newAdminFee);
 	
-	public Account getAccount();
+	public Bank getBank();
 
 }

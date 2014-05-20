@@ -12,18 +12,16 @@ import es.unileon.administrationFeeViewer.handler.MalformedHandlerException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.log4j.Logger;
-
 /**
+ * 
+ * @author EmanuelIosif
  *
- * @author runix
  */
 public class Office {
 
-    private final List<Account> accounts;
+    private List<Account> accounts;
     private Handler id;
     private final Bank bank;
-    private static final Logger LOG = Logger.getLogger(Account.class.getName());
     private long nextAccountNumber;
     public static final long MAX_ACCOUNT_NUMBER = 1000000000l - 1;
 
@@ -60,7 +58,6 @@ public class Office {
         }
 
         if (error.length() > 0) {
-            LOG.error("Office id " + this.id + " error : " + error.toString());
             throw new TransactionException(error.toString());
         }
     }
@@ -78,4 +75,10 @@ public class Office {
     public List<Account> getAccounts() {
         return this.accounts;
     }
+
+	public void setAccounts(List<Account> accounts) {
+		this.accounts = accounts;
+	}
+    
+    
 }

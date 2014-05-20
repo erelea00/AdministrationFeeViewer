@@ -30,7 +30,7 @@ public class AdministrationFeeViewerController {
             throws ServletException, IOException {
         
         Map<String, Object> myModel = new HashMap<String, Object>();
-        myModel.put("account", this.newAdministrationService.getAccount());
+        myModel.put("account", this.newAdministrationService.getBank().getOffices().get(0).getAccounts().get(0));
 
         return new ModelAndView("mainPage", "model", myModel);
     }

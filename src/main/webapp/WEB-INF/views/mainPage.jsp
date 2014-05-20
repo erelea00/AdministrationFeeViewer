@@ -15,8 +15,7 @@
     <p>Periodicidad de cobro de la comisión de mantenimiento por modalidad:
     <c:out value="${model.account.getAdminFee().getFeePeriod()}"/></p>
     
-    <br>
-    <a href="<c:url value="setModality.htm"/>"><fmt:message key="Seleccionar modalidad cuenta"/></a>
-    <br>
+    <a href="<c:url value="setModality.htm"/>"><fmt:message key="seleccionarModalidad"/></a>
+   
   </body>
 </html>

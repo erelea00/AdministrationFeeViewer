@@ -7,20 +7,54 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">		
 	
-	<bean id="newAdministrationService" class="es.unileon.administrationFeeViewer.services.NewAdministrationServiceImpl">
-		<property name="account">
-			<bean class="es.unileon.administrationFeeViewer.domain.Account">
-				<property name="adminFee">
-					<bean class="es.unileon.administrationFeeViewer.fees.AdministrationFee">
-					<property name="modality" value="Sin Seleccionar"/>
-					<property name="modalityFee" value="0.0"/>
-					<property name="feePeriod" value="Sin Seleccionar"/>
-				</bean>
-				</property>
-			</bean>
-		</property>
+	<bean id="bankHandler" class="es.unileon.administrationFeeViewer.handler.GenericHandler">
+		<constructor-arg value="1111"/>
 	</bean>
 	
+	<bean id="officeHandler" class="es.unileon.administrationFeeViewer.handler.GenericHandler">
+		<constructor-arg value="1112"/>
+	</bean>
+	
+	<bean id="newBank" class="es.unileon.administrationFeeViewer.bank.Bank">
+		<constructor-arg value="#{bankHandler}"/>
+		<property name="offices">
+            <list>
+                <ref bean="newOffice"/>
+            </list>
+         </property>
+	</bean>
+	
+	<bean id="newOffice" class="es.unileon.administrationFeeViewer.office.Office">
+		<constructor-arg value="#{bankHandler}"/>
+		<constructor-arg value="#{newBank}"/>
+		<property name="accounts">
+            <list>
+                <ref bean="newAccount"/>
+            </list>
+         </property>
+	</bean>
+	
+	<bean id="newAccount" class="es.unileon.administrationFeeViewer.domain.Account">
+		<constructor-arg value="#{newOffice}"/>
+		<constructor-arg value="#{newBank}"/>
+		<constructor-arg value="9606934665"/>
+		<property name="adminFee">
+			<ref bean="newAdminFee"/>
+		</property> 
+	</bean>
+	
+	<bean id="newAdminFee" class="es.unileon.administrationFeeViewer.fees.AdministrationFee">
+		<property name="modality" value="Sin Seleccionar"/>
+		<property name="modalityFee" value="0.0"/>
+		<property name="feePeriod" value="Sin Seleccionar"/>
+	</bean>
+	
+	<bean id="newAdministrationService" class="es.unileon.administrationFeeViewer.services.NewAdministrationServiceImpl">
+		<property name="bank">
+			<ref bean="newBank"/>
+		</property> 
+	</bean>
+
 	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
          <property name="basename" value="messages"/>
        </bean>	

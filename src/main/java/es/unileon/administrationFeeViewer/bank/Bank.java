@@ -4,7 +4,6 @@ package es.unileon.administrationFeeViewer.bank;
 
 import es.unileon.administrationFeeViewer.account.extra.AccountHandler;
 import es.unileon.administrationFeeViewer.account.extra.TransactionException;
-import es.unileon.administrationFeeViewer.domain.Account;
 import es.unileon.administrationFeeViewer.handler.Handler;
 import es.unileon.administrationFeeViewer.handler.MalformedHandlerException;
 import es.unileon.administrationFeeViewer.office.Office;
@@ -12,17 +11,15 @@ import es.unileon.administrationFeeViewer.office.Office;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.log4j.Logger;
-
 /**
+ * 
+ * @author EmanuelIosif
  *
- * @author runix
  */
 public class Bank {
 
-    private final List<Office> offices;
+    private List<Office> offices;
     private Handler bankID;
-    private static final Logger LOG = Logger.getLogger(Account.class.getName());
 
     public Bank(Handler bankID) throws MalformedHandlerException {
         this.bankID = new BankHandler(bankID.toString());
@@ -80,8 +77,18 @@ public class Bank {
         } 
 
         if (error.length() > 0) {
-            LOG.error("Bank id " + this.bankID + " error : " + error.toString());
             throw new TransactionException(error.toString());
         }
     }
+
+	public List<Office> getOffices() {
+		return offices;
+	}
+	
+	public void setOffices(List<Office> offices){
+		
+		this.offices = offices;
+	}
+    
+    
 }

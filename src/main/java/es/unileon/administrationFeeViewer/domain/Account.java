@@ -12,8 +12,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * 
+ * @author EmanuelIosif
  *
- * @author runix
  */
 public class Account implements Serializable{
 

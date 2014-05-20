@@ -1,12 +1,12 @@
 package es.unileon.administrationFeeViewer.services;
 
-import es.unileon.administrationFeeViewer.domain.Account;
+import es.unileon.administrationFeeViewer.bank.Bank;
 import es.unileon.administrationFeeViewer.fees.strategy.Context;
 import es.unileon.administrationFeeViewer.fees.strategy.concreteStrategies.*;
 
 public class NewAdministrationServiceImpl implements NewAdministrationService{
 	
-	private Account account;
+	private Bank bank;
 	
 	@Override
 	public void setNewAdminFee(NewAdministrationFee newAdminFee) {
@@ -24,16 +24,16 @@ public class NewAdministrationServiceImpl implements NewAdministrationService{
 									
 		}
 		
-		account.setAdminFee(context.executeStrategy());
+		bank.getOffices().get(0).getAccounts().get(0).setAdminFee(context.executeStrategy());
 		
 	}
 
-	public Account getAccount() {
-		return account;
+	public Bank getBank() {
+		return bank;
 	}
 
-	public void setAccount(Account account) {
-		this.account = account;
+	public void setBank(Bank bank) {
+		this.bank = bank;
 	}
 
 	
