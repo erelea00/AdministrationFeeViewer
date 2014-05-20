@@ -18,7 +18,7 @@
        	<form:option value="Cuenta Empresa"><fmt:message key="selection.company"/></form:option>
   </form:select><br/>
   <form:errors path="modality" cssClass="error"/><br/><br/>
-  <input type="submit" value="Execute">
+  <input type="submit" value="Continuar">
   <br/><br/><br/><br/><br/><br/><br/>
 </form:form>
 <a href="<c:url value="mainPage.htm"/>">Home</a>
