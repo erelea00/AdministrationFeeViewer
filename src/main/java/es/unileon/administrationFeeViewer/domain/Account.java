@@ -7,22 +7,21 @@ import es.unileon.administrationFeeViewer.fees.AdministrationFee;
 import es.unileon.administrationFeeViewer.handler.Handler;
 import es.unileon.administrationFeeViewer.handler.MalformedHandlerException;
 import es.unileon.administrationFeeViewer.office.Office;
-
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.apache.log4j.Logger;
 
 /**
  *
  * @author runix
  */
-public class Account {
+public class Account implements Serializable{
 
     /**
-     * The logger of the class
-     */
-    private static final Logger LOG = Logger.getLogger(Account.class.getName());
+	 *  Serial Version UID
+	 */
+	private static final long serialVersionUID = 1L;
+
     /**
      * The account identifier
      */
@@ -35,11 +34,11 @@ public class Account {
     /**
      * The account titulars
      */
-    private final List<Client> titulars;
+    private List<Client> titulars = null;;
     /**
      * The account authorizeds
      */
-    private final List<Client> authorizeds;
+    private List<Client> authorizeds = null;;
 
     /**
      * The max account's overdraft ( in positive )
@@ -69,18 +68,24 @@ public class Account {
         this.titulars = new ArrayList<>();
         this.authorizeds = new ArrayList<>();
         this.maxOverdraft = 0;
-        LOG.info("Create a new account with number " + accountnumber + " office " + office.getID().toString() + " bank " + bank.getID());
+        
+    }
+    
+    /**
+     * Empty Account Constructor
+     */
+    public Account(){
+    	
     }
 
     /**
      * Set the max account's overdraft
      *
      * @param maxOverdraft ( the account's overdraft ( in positive ))
-     * @return ( true if succes, false otherwise)
+     * @return ( true if success, false otherwise)
      */
     public boolean setMaxOverdraft(float maxOverdraft) {
         if (maxOverdraft >= 0) {
-            LOG.info("Change max overdraft to " + maxOverdraft + "\n");
             this.maxOverdraft = maxOverdraft;
             return true;
         }
@@ -100,11 +105,9 @@ public class Account {
     public boolean addTitular(Client client) {
         for (int i = 0; i < this.titulars.size(); i++) {
             if (this.titulars.get(i).getId().compareTo(client.getId()) == 0) {
-                LOG.error("Cannot add the titular " + client.getId().toString() + " , the titular already exists");
                 return false;
             }
         }
-        LOG.info(("Add new titular " + client.getId()));
         this.titulars.add(client);
         return true;
     }
@@ -123,12 +126,10 @@ public class Account {
     public boolean deleteTitular(Handler id) {
         for (int i = 0; i < this.titulars.size(); i++) {
             if (this.titulars.get(i).getId().compareTo(id) == 0) {
-                LOG.info("Delete " + id.toString() + " titular");
                 this.titulars.remove(i);
                 return true;
             }
         }
-        LOG.error("Cannot remove the titular " + id.toString() + " because it doesn't exist");
         return false;
     }
 
@@ -146,11 +147,9 @@ public class Account {
     public boolean addAuthorized(Client authorized) {
         for (int i = 0; i < this.authorizeds.size(); i++) {
             if (this.authorizeds.get(i).getId().compareTo(authorized.getId()) == 0) {
-                LOG.error("Cannot add the authorized " + authorized.getId().toString() + " , the authorized already exists");
                 return false;
             }
         }
-        LOG.info(("Add new titular " + authorized.getId()));
         return this.authorizeds.add(authorized);
     }
 
@@ -168,12 +167,10 @@ public class Account {
     public boolean deleteAuthorized(Handler id) {
         for (int i = 0; i < this.authorizeds.size(); i++) {
             if (this.authorizeds.get(i).getId().compareTo(id) == 0) {
-                LOG.info("Delete " + id.toString() + " authorized");
                 this.authorizeds.remove(i);
                 return true;
             }
         }
-        LOG.error("Cannot remove the authorized " + id.toString() + " because it doesn't exist");
         return false;
     }
 
@@ -247,6 +244,5 @@ public class Account {
 	public void setAdminFee(AdministrationFee adminFee) {
 		this.adminFee = adminFee;
 	}
-    
     
 }

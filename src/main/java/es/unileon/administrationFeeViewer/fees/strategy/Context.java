@@ -12,7 +12,7 @@ public class Context {
 		
 	}
 	
-	public AdministrationFee executeStrategy(String modalityOption){
+	public AdministrationFee executeStrategy(){
 		
 		return this.feeStrategy.execute();
 		
