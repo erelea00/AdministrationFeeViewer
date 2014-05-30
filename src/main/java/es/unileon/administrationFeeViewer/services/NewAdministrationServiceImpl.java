@@ -1,6 +1,6 @@
 package es.unileon.administrationFeeViewer.services;
 
-import es.unileon.administrationFeeViewer.bank.Bank;
+import es.unileon.administrationFeeViewer.domain.Account;
 import es.unileon.administrationFeeViewer.fees.strategy.Context;
 import es.unileon.administrationFeeViewer.fees.strategy.concreteStrategies.*;
 
@@ -14,7 +14,7 @@ public class NewAdministrationServiceImpl implements NewAdministrationService{
 	/**
 	 * Bank where the office with the account is located
 	 */
-	private Bank bank;
+	private Account account;
 	
 	/**
 	 * Sets a new administration fee for the current account
@@ -33,23 +33,23 @@ public class NewAdministrationServiceImpl implements NewAdministrationService{
 								   break;									
 		}
 		
-		bank.getOffices().get(0).getAccounts().get(0).setAdminFee(context.executeStrategy());
+		account.setAdminFee(context.executeStrategy());
 		
 	}
 
 	/**
 	 * Getter for the bank attribute
 	 */
-	public Bank getBank() {
-		return bank;
+	public Account getAccount() {
+		return account;
 	}
 	
 	/**
 	 * Setter for the bank attribute
 	 * @param bank Bank where the office with the account is located
 	 */
-	public void setBank(Bank bank) {
-		this.bank = bank;
+	public void setAccount(Account account) {
+		this.account = account;
 	}
 
 	

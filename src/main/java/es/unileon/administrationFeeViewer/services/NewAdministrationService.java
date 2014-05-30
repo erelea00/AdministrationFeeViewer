@@ -1,6 +1,6 @@
 package es.unileon.administrationFeeViewer.services;
 
-import es.unileon.administrationFeeViewer.bank.Bank;
+import es.unileon.administrationFeeViewer.domain.Account;
 
 /**
  * Interface which all administration services must implement
@@ -19,6 +19,6 @@ public interface NewAdministrationService {
 	 * Getter for a bank attribute
 	 * @return The bank where the office with the account is located
 	 */
-	public Bank getBank();
+	public Account getAccount();
 
 }
