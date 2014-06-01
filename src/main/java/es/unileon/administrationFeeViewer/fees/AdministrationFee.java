@@ -1,30 +1,54 @@
 package es.unileon.administrationFeeViewer.fees;
 
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  * Class representing the administration fee to be applyed to an account
  * @author EmanuelIosif
  *
  */
-public class AdministrationFee implements Fee{
+@SuppressWarnings("serial")
+@Entity
+@Table(name="administrationfees")
+public class AdministrationFee implements Fee, Serializable{
+	
+	/**
+	 * Represents the administrationnFeeID column in the administrationfees database table
+	 */
+	@Id
+    @Column(name = "administrationFeeID")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer administrationFeeID;
 	
 	/**
 	 * Annual fixed administration fee
 	 */
+	@Column(name = "anualAdminFee")
 	private final double ANUAL_ADMIN_FEE = 30;
 	
 	/**
 	 * Account modality type
 	 */
+	@Column(name = "modality")
 	private String modality ="";
 	
 	/**
 	 * Periodic modality fee
 	 */
+	@Column(name = "modalityFee")
 	private double modalityFee = 0.0;
 	
 	/**
 	 * How often the modality fee is charged
 	 */
+	@Column(name = "feePeriod")
 	private String feePeriod ="";
 	
 	/**

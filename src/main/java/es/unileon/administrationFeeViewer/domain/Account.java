@@ -1,63 +1,79 @@
 package es.unileon.administrationFeeViewer.domain;
 
-import es.unileon.administrationFeeViewer.fees.AdministrationFee;
-import es.unileon.administrationFeeViewer.handler.Handler;
 import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
- * Class representing the bank account
+ * Class representing the bank account - Conversion to database "accounts" table
  * @author EmanuelIosif
  *
  */
+@SuppressWarnings("serial")
+@Entity
+@Table(name="accounts")
 public class Account implements Serializable{
 
-    /**
-	 *  Serial Version UID
+	/**
+	 * Represents accountID column in the accounts database
 	 */
-	private static final long serialVersionUID = 1L;
-
-    /**
-     * The account identifier
-     */
-    private Handler id;
+	@Id
+	@Column(name="accountID")
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer accountID;
 
     /**
      * The account balance
      */
+	@Column(name = "balance")
     private double balance;
-
-    /**
-     * The max account's overdraft ( in positive )
-     */
-    private float maxOverdraft;
     
     /**
-     * Administration fee to be applied 
-     */
-    private AdministrationFee adminFee = null;
+	 * Annual fixed administration fee
+	 */
+	@Column(name = "anualAdminFee")
+	private final double ANUAL_ADMIN_FEE = 30;
+	
+	/**
+	 * Account modality type
+	 */
+	@Column(name = "modality")
+	private String modality ="";
+	
+	/**
+	 * Periodic modality fee
+	 */
+	@Column(name = "modalityFee")
+	private double modalityFee = 0.0;
+	
+	/**
+	 * How often the modality fee is charged
+	 */
+	@Column(name = "feePeriod")
+	private String feePeriod ="";
     
-    /**
-     * Empty Account Constructor
+	/**
+	 * Getter for the accountID attribute
+	 * @return The id of the account
+	 */
+    public Integer getAccountID() {
+		return accountID;
+	}
+    
+    /** 
+     * Setter for the accountID attribute
+     * @param accountID The id for the account
      */
-    public Account(){
-    	
-    }
+	public void setAccountID(Integer accountID) {
+		this.accountID = accountID;
+	}
 
-    /**
-     * Set the max account's overdraft
-     *
-     * @param maxOverdraft ( the account's overdraft ( in positive ))
-     * @return ( true if success, false otherwise)
-     */
-    public boolean setMaxOverdraft(float maxOverdraft) {
-        if (maxOverdraft >= 0) {
-            this.maxOverdraft = maxOverdraft;
-            return true;
-        }
-        return false;
-    }
-
-    /**
+	/**
      * Get the account's balance
      *
      * @return (the balance)
@@ -69,31 +85,66 @@ public class Account implements Serializable{
     }
 
     /**
-     * Get the max account's overdraft
-     * 
-     * @return (the account's overdraft )
-     */
-    public final double getMaxOverdraft() {
-        return this.maxOverdraft;
-    }
-
-
-    /**
      * Get the account ID
      *
      * @return (the account id)
      * @author runix
      */
-    public final Handler getID() {
-        return this.id;
-    }
-
-	public AdministrationFee getAdminFee() {
-		return adminFee;
+	
+	/**
+	 * Getter for the modality attribute
+	 * @return account modality
+	 */
+	public String getModality() {
+		return modality;
+	}
+	
+	/**
+	 * Setter for the modality attribute
+	 * @param modality
+	 */
+	public void setModality(String modality) {
+		this.modality = modality;
 	}
 
-	public void setAdminFee(AdministrationFee adminFee) {
-		this.adminFee = adminFee;
+	/**
+	 * Getter for the modality fee attribute
+	 * @return amount charged periodicaly
+	 */
+	public double getModalityFee() {
+		return modalityFee;
+	}
+
+	/**
+	 * Setter for the modality fee attribute
+	 * @param modalityFee
+	 */
+	public void setModalityFee(double modalityFee) {
+		this.modalityFee = modalityFee;
+	}
+
+	/**
+	 * Getter for the fee period attribute
+	 * @return how often the fee is charged
+	 */
+	public String getFeePeriod() {
+		return feePeriod;
+	}
+	
+	/**
+	 * Setter for the fee period attribute
+	 * @param feePeriod 
+	 */
+	public void setFeePeriod(String feePeriod) {
+		this.feePeriod = feePeriod;
+	}
+
+	/**
+	 * Getter for the annual fee constant
+	 * @return fee charged annually
+	 */
+	public double getANUAL_ADMIN_FEE() {
+		return ANUAL_ADMIN_FEE;
 	}
     
 }

@@ -6,7 +6,7 @@ package es.unileon.administrationFeeViewer.fees;
  *
  */
 
-public interface Fee {
+public interface Fee{
 
 	/**
 	 * Getter for the periodicity of a certain fee

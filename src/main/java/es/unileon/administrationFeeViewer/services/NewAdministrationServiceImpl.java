@@ -1,20 +1,45 @@
 package es.unileon.administrationFeeViewer.services;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import es.unileon.administrationFeeViewer.domain.Account;
 import es.unileon.administrationFeeViewer.fees.strategy.Context;
 import es.unileon.administrationFeeViewer.fees.strategy.concreteStrategies.*;
+import es.unileon.administrationFeeViewer.repository.AccountDao;
 
 /**
  * Service which sets a new administration fee for the current account
  * @author EmanuelIosif
  *
  */
+
+@Component
 public class NewAdministrationServiceImpl implements NewAdministrationService{
 	
 	/**
-	 * Bank where the office with the account is located
+	 * Account Data Access Object 
 	 */
-	private Account account;
+	@Autowired
+    private AccountDao accountDao;
+	
+	/**
+	 * Company Account Administration Fee Strategy
+	 */
+	@Autowired
+    private CompanyAccount companyAccount;
+	
+	/**
+	 * Personal Account Administration Fee Strategy
+	 */
+	@Autowired
+    private PersonalAccount personalAccount;
+	
+	/**
+	 * Plus Account Administration Strategy
+	 */
+	@Autowired
+    private PlusAccount plusAccount;
 	
 	/**
 	 * Sets a new administration fee for the current account
@@ -22,34 +47,40 @@ public class NewAdministrationServiceImpl implements NewAdministrationService{
 	@Override
 	public void setNewAdminFee(NewAdministrationFee newAdminFee) {
 		
-		Context context = null;
+		Context context = new Context();  //initializes the context that invokes the corresponding strategy
 		
+		//Decides which strategy to use based on the ComboBox Input in the Web View 
 		switch (newAdminFee.getModality()){						
-			case "Cuenta Personal": context = new Context(new PersonalAccount());
+			case "Cuenta Personal": context.setStrategy(personalAccount);
 									break;
-			case "Cuenta Plus": context = new Context(new PlusAccount());
+			case "Cuenta Plus": context.setStrategy(plusAccount);;
 								break;
-			case "Cuenta Empresa": context = new Context(new CompanyAccount());
+			case "Cuenta Empresa": context.setStrategy(companyAccount);;
 								   break;									
 		}
 		
-		account.setAdminFee(context.executeStrategy());
+		//Sets the modality related attributes in the account and injects it in the database
+		Account newAccount = accountDao.getAccount();
+		newAccount.setModality(context.executeStrategy().getModality());
+		newAccount.setModalityFee(context.executeStrategy().getModalityFee());
+		newAccount.setFeePeriod(context.executeStrategy().getFeePeriod());
+		accountDao.saveAccount(newAccount);
 		
-	}
-
-	/**
-	 * Getter for the bank attribute
-	 */
-	public Account getAccount() {
-		return account;
 	}
 	
 	/**
-	 * Setter for the bank attribute
-	 * @param bank Bank where the office with the account is located
+	 * Setter for the Account Data Access Object 
+	 * @param accountDao
 	 */
-	public void setAccount(Account account) {
-		this.account = account;
+	public void setAccountDao(AccountDao accountDao) {
+        this.accountDao = accountDao;
+    }
+
+	/**
+	 * Getter for the account attribute
+	 */
+	public Account getAccount() {
+		return accountDao.getAccount();
 	}
 
 	
