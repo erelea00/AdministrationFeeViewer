@@ -56,10 +56,9 @@ public class AdministrationFeeViewerControllerTests {
 	@Test 
 	public void testHandleRequestView() throws Exception{	
 		
-        AdministrationFeeViewerController controller = new AdministrationFeeViewerController();
-        controller.setNewAdministrationService(implementation);
+        adminController.setNewAdministrationService(implementation);
         
-        ModelAndView modelAndView = controller.handleRequest(null, null);	
+        ModelAndView modelAndView = adminController.handleRequest(null, null);	
         
         assertEquals("mainPage", modelAndView.getViewName());
         assertNotNull(modelAndView.getModel());
