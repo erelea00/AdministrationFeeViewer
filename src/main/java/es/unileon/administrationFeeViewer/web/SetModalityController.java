@@ -29,7 +29,7 @@ public class SetModalityController {
     protected final Log logger = LogFactory.getLog(getClass());
 
     /**
-     * Autowired administration fee field
+     * Autowired administration service field
      */
     @Autowired
     private NewAdministrationService newAdministrationService;

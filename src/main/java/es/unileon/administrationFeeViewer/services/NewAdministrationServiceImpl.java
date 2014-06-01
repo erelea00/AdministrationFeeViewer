@@ -82,6 +82,54 @@ public class NewAdministrationServiceImpl implements NewAdministrationService{
 	public Account getAccount() {
 		return accountDao.getAccount();
 	}
+	
+	/**
+	 * Getter for companyAccount attribute
+	 * @return companyAccount strategy
+	 */
+	public CompanyAccount getCompanyAccount() {
+		return companyAccount;
+	}
+
+	/**
+	 * Setter for companyAccount attribute
+	 * @param companyAccount companyAccount strategy
+	 */
+	public void setCompanyAccount(CompanyAccount companyAccount) {
+		this.companyAccount = companyAccount;
+	}
+	
+	/**
+	 * Getter for personalAccount attribute
+	 * @return personalAccount Strategy
+	 */
+	public PersonalAccount getPersonalAccount() {
+		return personalAccount;
+	}
+	
+	/**
+	 * Setter for personalAccount attribute
+	 * @param personalAccount personalAccount Strategy
+	 */
+	public void setPersonalAccount(PersonalAccount personalAccount) {
+		this.personalAccount = personalAccount;
+	}
+	
+	/**
+	 * Getter for plusAccount attribute
+	 * @return plusAccount Strategy
+	 */
+	public PlusAccount getPlusAccount() {
+		return plusAccount;
+	}
+
+	/**
+	 * Setter for plusAccount attribute
+	 * @param plusAccount plusAccount Strategy
+	 */
+	public void setPlusAccount(PlusAccount plusAccount) {
+		this.plusAccount = plusAccount;
+	}
 
 	
 }
