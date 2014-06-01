@@ -107,6 +107,22 @@ public class AdministrationFee implements Fee, Serializable{
 		return ANUAL_ADMIN_FEE;
 	}
 	
+	/**
+	 * Getter for the Administration Fee Id attribute
+	 * @return Id of the Administration Fee
+	 */
+	public Integer getAdministrationFeeID() {
+		return administrationFeeID;
+	}
+
+	/**
+	 * Setter for the Administration Fee Id attribute
+	 * @param administrationFeeID Id of the Administration Fee
+	 */
+	public void setAdministrationFeeID(Integer administrationFeeID) {
+		this.administrationFeeID = administrationFeeID;
+	}
+	
 	
 	
 }

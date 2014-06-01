@@ -83,6 +83,13 @@ public class Account implements Serializable{
     public final double getBalance() {
         return this.balance;
     }
+    
+    /**
+     * Setter for account balance attribute
+     */
+    public void setBalance(double balance){
+    	this.balance = balance;
+    }
 
     /**
      * Get the account ID
