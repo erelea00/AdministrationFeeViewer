@@ -12,13 +12,37 @@ import es.unileon.administrationFeeViewer.fees.strategy.concreteStrategies.PlusA
 import es.unileon.administrationFeeViewer.repository.InMemoryAccountDao;
 import es.unileon.administrationFeeViewer.repository.InMemoryAdministrationFeeDao;
 
+/**
+ * Class which tests the methods contained inside the NewAdministrationServiceImpl class
+ * @author EmanuelIosif
+ *
+ */
 public class NewAdministrationServiceImplTests {
-
+	
+	/**
+	 * Account that needs to be assigned to the in memory dao
+	 */
 	private Account account;
+	
+	/**
+	 * Dao used by the AdministrationService to recover the account
+	 */
 	private InMemoryAccountDao accountDao;
+	
+	/**
+	 * New administrationFee to be assigned to the account
+	 */
 	private NewAdministrationFee newAdministrationFee;
+	
+	/**
+	 * AdministrationService used to assign the new administration fee to the account
+	 */
 	private NewAdministrationServiceImpl implementation;
 	
+	/**
+	 * Used to initialize all the fields and make the necessary assignments
+	 * @throws Exception
+	 */
 	@Before
 	public void setUp() throws Exception{
 		
@@ -42,6 +66,9 @@ public class NewAdministrationServiceImplTests {
 		
 	}
 	
+	/**
+	 * Tests getter for the account attribute
+	 */
 	@Test
 	public void testGetAccount(){
 		
@@ -51,6 +78,9 @@ public class NewAdministrationServiceImplTests {
 		
 	}
 	
+	/**
+	 * Tests the set new administration method with company account data input
+	 */
 	@Test
 	public void testSetNewAdminFeeWithCompanyAccountData(){
 		
@@ -76,6 +106,9 @@ public class NewAdministrationServiceImplTests {
 		assertEquals("Semestral", accountDao.getAccount().getFeePeriod());
 	}
 	
+	/**
+	 * Tests the set new administration method with personal account data input
+	 */
 	@Test
 	public void testSetNewAdminFeeWithPersonalAccountData(){
 		
@@ -101,6 +134,9 @@ public class NewAdministrationServiceImplTests {
 		assertEquals("Mensual", accountDao.getAccount().getFeePeriod());
 	}
 	
+	/**
+	 * Tests the set new administration method with plus account data input
+	 */
 	@Test
 	public void testSetNewAdminFeeWithPlusAccountData(){
 		

@@ -5,10 +5,22 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * Class which tests the methods contained inside the Account class
+ * @author EmanuelIosif
+ *
+ */
 public class AccountTests {
-
+	
+	/**
+	 * Account upon which all the methods are invoked
+	 */
 	private Account account;
 	
+	/**
+	 * Initializes the Account 
+	 * @throws Exception
+	 */
 	@Before
 	public void setUp() throws Exception{
 		
@@ -16,6 +28,9 @@ public class AccountTests {
 		
 	}
 	
+	/**
+	 * Tests getter and setter for the accountID attribute
+	 */
 	@Test
 	public void testSetAndGetAccountID(){
 		
@@ -26,6 +41,9 @@ public class AccountTests {
 		
 	}
 	
+	/**
+	 * Tests getter and setter for the balance attribute
+	 */
 	@Test
 	public void testSetAndGetBalance(){
 		
@@ -36,6 +54,9 @@ public class AccountTests {
 		
 	}
 	
+	/**
+	 * Tests getter and setter for the modality attribute
+	 */
 	@Test
 	public void testSetAndGetModality(){
 		
@@ -46,6 +67,9 @@ public class AccountTests {
 		
 	}
 	
+	/**
+	 * Tests getter and setter for the modalityFee attribute
+	 */
 	@Test
 	public void testSetAndGetModalityFee(){
 		
@@ -56,8 +80,11 @@ public class AccountTests {
 		
 	}
 	
+	/**
+	 * Tests getter and setter for the feePeriod attribute
+	 */
 	@Test
-	public void testSetAndGetFeeperiod(){
+	public void testSetAndGetFeePeriod(){
 		
 		String feePeriod = "Trimestral";
 		assertEquals("", account.getFeePeriod());
@@ -66,6 +93,9 @@ public class AccountTests {
 		
 	}
 	
+	/**
+	 * Tests getter for the ANUAL_ADMIN_FEE aconstant
+	 */
 	@Test
 	public void testGetAnualAdminFee(){
 		

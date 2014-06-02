@@ -6,16 +6,31 @@ import static org.junit.Assert.assertNull;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * Tests the methods contained inside the AdministrationFee class
+ * @author EmanuelIosif
+ *
+ */
 public class AdministrationFeeTests {
 
+	/**
+	 * AdministrationFee used to invoke the corresponding methods to test
+	 */
 	private AdministrationFee adminFee;
 	
+	/**
+	 * Initializes the AdministrationFee
+	 * @throws Exception
+	 */
 	@Before
 	public void setUp() throws Exception{
 		
 		adminFee = new AdministrationFee();
 	}
 	
+	/**
+	 * Tests getter and setter for the administrationFeeID attribute
+	 */
 	@Test
 	public void testSetAndGetadminFeeID(){
 		
@@ -26,6 +41,9 @@ public class AdministrationFeeTests {
 		
 	}
 	
+	/**
+	 * Tests getter and setter for the modality attribute
+	 */
 	@Test
 	public void testSetAndGetModality(){
 		
@@ -36,6 +54,9 @@ public class AdministrationFeeTests {
 		
 	}
 	
+	/**
+	 * Tests getter and setter for the modalityFee attribute
+	 */
 	@Test
 	public void testSetAndGetModalityFee(){
 		
@@ -46,6 +67,9 @@ public class AdministrationFeeTests {
 		
 	}
 	
+	/**
+	 * Tests getter and setter for the feePeriod attribute
+	 */
 	@Test
 	public void testSetAndGetFeeperiod(){
 		
@@ -56,6 +80,9 @@ public class AdministrationFeeTests {
 		
 	}
 	
+	/**
+	 * Tests getter for the ANUAL_ADMIN_FEE attribute
+	 */
 	@Test
 	public void testGetAnualAdminFee(){
 		

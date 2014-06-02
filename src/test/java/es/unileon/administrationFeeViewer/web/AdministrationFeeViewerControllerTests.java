@@ -13,13 +13,37 @@ import es.unileon.administrationFeeViewer.repository.InMemoryAccountDao;
 import es.unileon.administrationFeeViewer.services.NewAdministrationService;
 import es.unileon.administrationFeeViewer.services.NewAdministrationServiceImpl;
 
+/**
+ * Class which tests the methods contained inside the AdministrationFeeViewerController class
+ * @author EmanuelIosif
+ *
+ */
 public class AdministrationFeeViewerControllerTests {
-
+	
+	/**
+	 * Administration controller used to invoke the methods to be tested
+	 */
 	private AdministrationFeeViewerController adminController;
+	
+	/**
+	 * New service implementation used to set a new administration fee to an account
+	 */
 	private NewAdministrationServiceImpl implementation;
+	
+	/**
+	 * Account Data Access Object which retrieves an account
+	 */
 	private InMemoryAccountDao accountDao;
+	
+	/**
+	 * Account to be used by the Account DAO
+	 */
 	private Account account;
 	
+	/**
+	 * Initializes all the fields and makes the necessary assignments
+	 * @throws Exception
+	 */
 	@Before
 	public void setUp() throws Exception{
 		
@@ -42,6 +66,9 @@ public class AdministrationFeeViewerControllerTests {
 		implementation.setAccountDao(accountDao);
 	}
 	
+	/**
+	 * Tests setter and getter for the newAdministrationService field
+	 */
 	@Test
 	public void testSetAndGetNewAdministrationService(){
 		
@@ -53,6 +80,11 @@ public class AdministrationFeeViewerControllerTests {
 	}
 	
 	
+	/**
+	 * Tests whether the model and view are returned correctly after a new request is received.
+	 * Also tests that the account is successfully retrieved from the model
+	 * @throws Exception
+	 */
 	@Test 
 	public void testHandleRequestView() throws Exception{	
 		
